@@ -1,0 +1,162 @@
+{
+   "annotations"{
+      "authorization"{
+         k8s{
+            "io/decision	allow
+io/reason"
+         }
+      }
+   }apiVersion	audit.k8s.io/v1
+auditID	e94524e4-8834-4988-831c-381190344890
+category	kube-audit
+ccpNamespace	5f6e3b882f5f1500015cd2e5
+Cloud	AzureCloud
+Environment	prod
+kind	Event
+level	RequestResponse
+objectRef{
+      apiGroup	rbac.authorization.k8s.io
+apiVersion	v1
+name	root-cluster-admin-binding
+resource	clusterrolebindings
+   }"operationName	Microsoft.ContainerService/managedClusters/diagnosticLogs/Read
+properties"{
+      "log"{
+         "kind":"Event",
+         "apiVersion":"audit.k8s.io/v1",
+         "level":"RequestResponse",
+         "auditID":"e94524e4-8834-4988-831c-381190344890",
+         "stage":"ResponseComplete",
+         "requestURI":"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?fieldManager=kubectl-create",
+         "verb":"create",
+         "user":{
+            "username":"masterclient",
+            "groups":[
+               "system:masters",
+               "system:authenticated"
+            ]
+         },
+         "sourceIPs":[
+            "redacted"
+         ],
+         "userAgent":"kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a",
+         "objectRef":{
+            "resource":"clusterrolebindings",
+            "name":"root-cluster-admin-binding",
+            "apiGroup":"rbac.authorization.k8s.io",
+            "apiVersion":"v1"
+         },
+         "responseStatus":{
+            "metadata":{
+               
+            },
+            "code":201
+         },
+         "requestObject":{
+            "kind":"ClusterRoleBinding",
+            "apiVersion":"rbac.authorization.k8s.io/v1",
+            "metadata":{
+               "name":"root-cluster-admin-binding",
+               "creationTimestamp":null
+            },
+            "subjects":[
+               {
+                  "kind":"User",
+                  "apiGroup":"rbac.authorization.k8s.io",
+                  "name":"jenks"
+               }
+            ],
+            "roleRef":{
+               "apiGroup":"rbac.authorization.k8s.io",
+               "kind":"ClusterRole",
+               "name":"cluster-admin"
+            }
+         },
+         "responseObject":{
+            "kind":"ClusterRoleBinding",
+            "apiVersion":"rbac.authorization.k8s.io/v1",
+            "metadata":{
+               "name":"root-cluster-admin-binding",
+               "selfLink":"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/root-cluster-admin-binding",
+               "uid":"97058fb3-78ac-4c01-977b-9f80bbb6d01e",
+               "resourceVersion":"6269658",
+               "creationTimestamp":"2020-10-29T00:38:15Z"
+            },
+            "subjects":[
+               {
+                  "kind":"User",
+                  "apiGroup":"rbac.authorization.k8s.io",
+                  "name":"jenks"
+               }
+            ],
+            "roleRef":{
+               "apiGroup":"rbac.authorization.k8s.io",
+               "kind":"ClusterRole",
+               "name":"cluster-admin"
+            }
+         },
+         "requestReceivedTimestamp":"2020-10-29T00:38:15.376590Z",
+         "stageTimestamp":"2020-10-29T00:38:15.384304Z",
+         "annotations":{
+            "authorization.k8s.io/decision":"allow",
+            "authorization.k8s.io/reason":""
+         }
+      }pod	kube-apiserver-685d4df5df-r5nsn
+stream	stdout
+   }"requestObject"{
+      apiVersion	rbac.authorization.k8s.io/v1
+kind	ClusterRoleBinding
+metadata{
+         "name	root-cluster-admin-binding"
+      }"roleRef"{
+         apiGroup	rbac.authorization.k8s.io
+kind	ClusterRole
+name	cluster-admin
+      }"subjects"[
+         {
+            apiGroup	rbac.authorization.k8s.io
+kind	User
+name	jenks
+         }
+      ]
+   }requestReceivedTimestamp	2020-10-29T00:38:15.376590Z
+requestURI	/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?fieldManager=kubectl-create
+resourceIde	redacted
+responseObject{
+      apiVersion	rbac.authorization.k8s.io/v1
+kind	ClusterRoleBinding
+metadata{
+         creationTimestamp	2020-10-29T00:38:15Z
+name	root-cluster-admin-binding
+resourceVersion	6269658
+selfLink	/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/root-cluster-admin-binding
+uid	97058fb3-78ac-4c01-977b-9f80bbb6d01e
+      }"roleRef"{
+         apiGroup	rbac.authorization.k8s.io
+kind	ClusterRole
+name	cluster-admin
+      }"subjects"[
+         {
+            apiGroup	rbac.authorization.k8s.io
+kind	User
+name	jenks
+         }
+      ]
+   }"responseStatus"{
+      code	201
+   }"service	azure
+sourceIPs"[
+     redacted
+   ]stage	ResponseComplete
+stageTimestamp	2020-10-29T00:38:15.384304Z
+time	2020-10-29T00:38:15Z
+UnderlayClass	hcp-underlay
+UnderlayName	hcp-underlay-westus-cx-71
+user{
+      "groups"[
+         "system":"masters",
+         "system":"authenticated"
+      ]"username	masterclient"
+   }userAgent	kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a
+verb	create
+}

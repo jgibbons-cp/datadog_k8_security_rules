@@ -1,0 +1,150 @@
+{
+   "annotations"{
+      "authorization"{
+         k8s{
+            "io/decision	allow
+io/reason"
+         }
+      }
+   }apiVersion	audit.k8s.io/v1
+auditID	1c8fb711-260e-4d20-9f9d-127820afbae6
+category	kube-audit-admin
+ccpNamespace	5f6e3b882f5f1500015cd2e5
+Cloud	AzureCloud
+Environment	prod
+kind	Event
+level	RequestResponse
+objectRef{
+      apiGroup	rbac.authorization.k8s.io
+apiVersion	v1
+name	root-cluster-admin-binding
+resource	clusterrolebindings
+   }"operationName	Microsoft.ContainerService/managedClusters/diagnosticLogs/Read
+properties"{
+      "log"{
+         "kind":"Event",
+         "apiVersion":"audit.k8s.io/v1",
+         "level":"RequestResponse",
+         "auditID":"1c8fb711-260e-4d20-9f9d-127820afbae6",
+         "stage":"ResponseComplete",
+         "requestURI":"/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?fieldManager=kubectl-create",
+         "verb":"create",
+         "user":{
+            "username":"masterclient",
+            "groups":[
+               "system:masters",
+               "system:authenticated"
+            ]
+         },
+         "sourceIPs":[
+            "redacted"
+         ],
+         "userAgent":"kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a",
+         "objectRef":{
+            "resource":"clusterrolebindings",
+            "name":"root-cluster-admin-binding",
+            "apiGroup":"rbac.authorization.k8s.io",
+            "apiVersion":"v1"
+         },
+         "responseStatus":{
+            "metadata":{
+               
+            },
+            "status":"Failure",
+            "reason":"AlreadyExists",
+            "code":409
+         },
+         "requestObject":{
+            "kind":"ClusterRoleBinding",
+            "apiVersion":"rbac.authorization.k8s.io/v1",
+            "metadata":{
+               "name":"root-cluster-admin-binding",
+               "creationTimestamp":null
+            },
+            "subjects":[
+               {
+                  "kind":"User",
+                  "apiGroup":"rbac.authorization.k8s.io",
+                  "name":"jenks"
+               }
+            ],
+            "roleRef":{
+               "apiGroup":"rbac.authorization.k8s.io",
+               "kind":"ClusterRole",
+               "name":"cluster-admin"
+            }
+         },
+         "responseObject":{
+            "kind":"Status",
+            "apiVersion":"v1",
+            "metadata":{
+               
+            },
+            "status":"Failure",
+            "message":"clusterrolebindings.rbac.authorization.k8s.io \"root-cluster-admin-binding\" already exists",
+            "reason":"AlreadyExists",
+            "details":{
+               "name":"root-cluster-admin-binding",
+               "group":"rbac.authorization.k8s.io",
+               "kind":"clusterrolebindings"
+            },
+            "code":409
+         },
+         "requestReceivedTimestamp":"2020-10-29T00:55:40.130435Z",
+         "stageTimestamp":"2020-10-29T00:55:40.138827Z",
+         "annotations":{
+            "authorization.k8s.io/decision":"allow",
+            "authorization.k8s.io/reason":""
+         }
+      }pod	kube-apiserver-685d4df5df-r5nsn
+stream	stdout
+   }"requestObject"{
+      apiVersion	rbac.authorization.k8s.io/v1
+kind	ClusterRoleBinding
+metadata{
+         "name	root-cluster-admin-binding"
+      }"roleRef"{
+         apiGroup	rbac.authorization.k8s.io
+kind	ClusterRole
+name	cluster-admin
+      }"subjects"[
+         {
+            apiGroup	rbac.authorization.k8s.io
+kind	User
+name	jenks
+         }
+      ]
+   }requestReceivedTimestamp	2020-10-29T00:55:40.130435Z
+requestURI	/apis/rbac.authorization.k8s.io/v1/clusterrolebindings?fieldManager=kubectl-create
+resourceId	redacted
+responseObject{
+      apiVersion	v1
+code	409
+details{
+         group	rbac.authorization.k8s.io
+kind	clusterrolebindings
+name	root-cluster-admin-binding
+      }kind	Status
+message	clusterrolebindings.rbac.authorization.k8s.io"root-cluster-admin-binding""already exists
+reason	AlreadyExists
+status	Failure"
+   }"responseStatus"{
+      code	409
+reason	AlreadyExists
+status	Failure
+   }"service	azure
+sourceIPs"[
+      redacted
+   ]stage	ResponseComplete
+stageTimestamp	2020-10-29T00:55:40.138827Z
+time	2020-10-29T00:55:40Z
+UnderlayClass	hcp-underlay
+UnderlayName	hcp-underlay-westus-cx-71
+user{
+      "groups"[
+         "system":"masters",
+         "system":"authenticated"
+      ]"username	masterclient"
+   }userAgent	kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a
+verb	create
+}
