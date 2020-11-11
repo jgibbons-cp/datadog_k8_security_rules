@@ -5,7 +5,7 @@ import requests
 import sys
 
 FIRST_ARG = 1
-DEBUG = False
+DEBUG = True
 FAIL = -1
 
 api_key = os.environ["DD_API_KEY"]
@@ -64,8 +64,6 @@ except getopt.GetoptError as e:
 for opt, arg in opts:
     if opt in ['-l']:
         security_rules = list_sec_rules()
-
-        sys.exit()
 
         if DEBUG is True:
             print(security_rules)
