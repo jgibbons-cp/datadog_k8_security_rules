@@ -19,3 +19,14 @@ Datadog Kubernetes Security Rules
     
     `kubectl create role jenks_test --verb=create --resource=pods`  
     `kubectl create clusterrole jenks_test --verb=create --resource=pods`  
+
+Utility
+--
+
+dd_secmon_util.py - will list security rules in an account or pull a rules JSON.  It has been written for use
+only and very minimally tested.  
+
+* Get a rule - `python3 dd_secmon_util.py -g "Apache HTTP requests from security scanner"`  
+* List rules - `python3 dd_secmon_util.py -l`  
+
+Need to add ability to put rules in another account.  
