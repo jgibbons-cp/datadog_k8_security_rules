@@ -1,0 +1,37 @@
+{
+    "creationAuthorId": 602888,
+    "tags": [],
+    "isEnabled": true,
+    "hasExtendedTitle": true,
+    "message": "***Sample Message***",
+    "options": {
+        "evaluationWindow": 900,
+        "maxSignalDuration": 86400,
+        "keepAlive": 3600
+    },
+    "version": 7,
+    "createdAt": 1604688216763,
+    "queries": [
+        {
+            "distinctFields": [],
+            "name": "",
+            "aggregation": "count",
+            "groupByFields": [],
+            "query": "@apiVersion:audit.k8s.io*  (@objectRef.resource:clusterroles OR @objectRef.resource:roles) @verb:create   (@request_object_rules_verbs:\"*\" OR @request_object_rules_resources:\"*\")",
+            "trackType": "logs"
+        }
+    ],
+    "isDeleted": false,
+    "cases": [
+        {
+            "status": "high",
+            "notifications": [],
+            "name": "Clusterrole or role created with wildcard",
+            "condition": "a>1"
+        }
+    ],
+    "type": "threshold",
+    "id": "pik-q7n-bed",
+    "isDefault": false,
+    "name": "Clusterrole or role created with verb or resource wildcard"
+}

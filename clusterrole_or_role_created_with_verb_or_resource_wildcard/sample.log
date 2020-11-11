@@ -1,0 +1,116 @@
+{
+	"id": "redacted",
+	"content": {
+		"timestamp": "2020-11-08T03:20:24.996Z",
+		"status": "info",
+		"tags": [
+			"sourcecategory:azure",
+			"forwardername:redacted",
+			"subscription_id:redacted",
+			"source:azure.containerservice",
+			"resource_group:redacted"
+		],
+		"service": "azure",
+		"source": "azure.containerservice",
+		"attributes": {
+			"request_object_rules_verbs": "create",
+			"resourceId": "redacted",
+			"request_object_rules_resources": "*",
+			"annotations": {
+				"authorization": {
+					"k8s": {
+						"io/reason": "",
+						"io/decision": "allow"
+					}
+				}
+			},
+			"responseObject": {
+				"metadata": {
+					"uid": "redacted",
+					"resourceVersion": "8191880",
+					"name": "jenks_test",
+					"creationTimestamp": "2020-11-08T03:19:36Z",
+					"selfLink": "/apis/rbac.authorization.k8s.io/v1/clusterroles/jenks_test"
+				},
+				"apiVersion": "rbac.authorization.k8s.io/v1",
+				"kind": "ClusterRole",
+				"rules": [
+					{
+						"resources": [
+							"*"
+						],
+						"verbs": [
+							"create"
+						],
+						"apiGroups": [
+							""
+						]
+					}
+				]
+			},
+			"apiVersion": "audit.k8s.io/v1",
+			"UnderlayClass": "hcp-underlay",
+			"auditID": "fb77d290-c083-4e6f-9b47-acee564a42cd",
+			"requestReceivedTimestamp": "2020-11-08T03:19:36.611002Z",
+			"objectRef": {
+				"apiGroup": "rbac.authorization.k8s.io",
+				"apiVersion": "v1",
+				"resource": "clusterroles",
+				"name": "jenks_test"
+			},
+			"level": "RequestResponse",
+			"kind": "Event",
+			"verb": "create",
+			"operationName": "Microsoft.ContainerService/managedClusters/diagnosticLogs/Read",
+			"userAgent": "kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a",
+			"requestURI": "/apis/rbac.authorization.k8s.io/v1/clusterroles?fieldManager=kubectl-create",
+			"responseStatus": {
+				"code": 201
+			},
+			"ccpNamespace": "redacted",
+			"stageTimestamp": "2020-11-08T03:19:36.623726Z",
+			"sourceIPs": [
+				"redacted"
+			],
+			"stage": "ResponseComplete",
+			"service": "azure",
+			"Cloud": "AzureCloud",
+			"Environment": "prod",
+			"time": "2020-11-08T03:19:36Z",
+			"category": "kube-audit-admin",
+			"UnderlayName": "hcp-underlay-westus-cx-71",
+			"requestObject": {
+				"metadata": {
+					"name": "jenks_test"
+				},
+				"apiVersion": "rbac.authorization.k8s.io/v1",
+				"kind": "ClusterRole",
+				"rules": [
+					{
+						"resources": [
+							"*"
+						],
+						"verbs": [
+							"create"
+						],
+						"apiGroups": [
+							""
+						]
+					}
+				]
+			},
+			"user": {
+				"groups": [
+					"system:masters",
+					"system:authenticated"
+				],
+				"username": "masterclient"
+			},
+			"properties": {
+				"pod": "kube-apiserver-685d4df5df-rd4tm",
+				"log": "{\"kind\":\"Event\",\"apiVersion\":\"audit.k8s.io/v1\",\"level\":\"RequestResponse\",\"auditID\":\"fb77d290-c083-4e6f-9b47-acee564a42cd\",\"stage\":\"ResponseComplete\",\"requestURI\":\"/apis/rbac.authorization.k8s.io/v1/clusterroles?fieldManager=kubectl-create\",\"verb\":\"create\",\"user\":{\"username\":\"masterclient\",\"groups\":[\"system:masters\",\"system:authenticated\"]},\"sourceIPs\":[\"redacted\"],\"userAgent\":\"kubectl/v1.19.3 (linux/amd64) kubernetes/1e11e4a\",\"objectRef\":{\"resource\":\"clusterroles\",\"name\":\"jenks_test\",\"apiGroup\":\"rbac.authorization.k8s.io\",\"apiVersion\":\"v1\"},\"responseStatus\":{\"metadata\":{},\"code\":201},\"requestObject\":{\"kind\":\"ClusterRole\",\"apiVersion\":\"rbac.authorization.k8s.io/v1\",\"metadata\":{\"name\":\"jenks_test\",\"creationTimestamp\":null},\"rules\":[{\"verbs\":[\"create\"],\"apiGroups\":[\"\"],\"resources\":[\"*\"]}]},\"responseObject\":{\"kind\":\"ClusterRole\",\"apiVersion\":\"rbac.authorization.k8s.io/v1\",\"metadata\":{\"name\":\"jenks_test\",\"selfLink\":\"/apis/rbac.authorization.k8s.io/v1/clusterroles/jenks_test\",\"uid\":\"redacted\",\"resourceVersion\":\"8191880\",\"creationTimestamp\":\"2020-11-08T03:19:36Z\"},\"rules\":[{\"verbs\":[\"create\"],\"apiGroups\":[\"\"],\"resources\":[\"*\"]}]},\"requestReceivedTimestamp\":\"2020-11-08T03:19:36.611002Z\",\"stageTimestamp\":\"2020-11-08T03:19:36.623726Z\",\"annotations\":{\"authorization.k8s.io/decision\":\"allow\",\"authorization.k8s.io/reason\":\"\"}}\n",
+				"stream": "stdout"
+			}
+		}
+	}
+}
