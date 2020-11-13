@@ -1,0 +1,49 @@
+{
+    "id": "GbWdKKY8RWusikAlZYwCsg",
+    "type": "pipeline",
+    "name": "redacted",
+    "is_enabled": true,
+    "is_read_only": false,
+    "filter": {
+        "query": "service:azure"
+    },
+    "processors": [
+        {
+            "name": "Grok Parser",
+            "is_enabled": true,
+            "source": "properties.log",
+            "samples": [
+                "{\"kind\":\"Event\",\"apiVersion\":\"audit.k8s.io/v1\",\"level\":\"Metadata\",\"auditID\":\"9bdf9029-8827-46cb-9941-8efe52b6f0c7\",\"stage\":\"ResponseComplete\",\"requestURI\":\"/apis/rbac.authorization.k8s.io/v1beta1?timeout=32s\",\"verb\":\"get\",\"user\":{\"username\":\"system:serviceaccount:kube-system:generic-garbage-collector\",\"uid\":\"redacted\",\"groups\":[\"system:serviceaccounts\",\"system:serviceaccounts:kube-system\",\"system:authenticated\"]},\"sourceIPs\":[\"redacted\"],\"userAgent\":\"kube-controller-manager/v1.17.11 (linux/amd64) kubernetes/3a36121/system:serviceaccount:kube-system:generic-garbage-collector\",\"responseStatus\":{\"metadata\":{},\"code\":200},\"requestReceivedTimestamp\":\"2020-09-28T20:33:45.626675Z\",\"stageTimestamp\":\"2020-09-28T20:33:45.626817Z\",\"annotations\":{\"authorization.k8s.io/decision\":\"allow\",\"authorization.k8s.io/reason\":\"RBAC: allowed by ClusterRoleBinding \\\"system:discovery\\\" of ClusterRole \\\"system:discovery\\\" to Group \\\"system:authenticated\\\"\"}}\n"
+            ],
+            "grok": {
+                "support_rules": "",
+                "match_rules": "rule1 %{data::json}\n"
+            },
+            "type": "grok-parser"
+        },
+        {
+            "name": "%{requestObject.rules.resources} - in attribute request_object_rules_resources",
+            "is_enabled": true,
+            "template": "%{requestObject.rules.resources}",
+            "target": "request_object_rules_resources",
+            "is_replace_missing": false,
+            "type": "string-builder-processor"
+        },
+        {
+            "name": "%{requestObject.rules.verbs} - in attribute request_object_rules_verbs",
+            "is_enabled": true,
+            "template": "%{requestObject.rules.verbs}",
+            "target": "request_object_rules_verbs",
+            "is_replace_missing": false,
+            "type": "string-builder-processor"
+        },
+        {
+            "name": "%{requestObject.rules.apiGroups} - in attribute request_object_rules_api_groups",
+            "is_enabled": true,
+            "template": "%{requestObject.rules.apiGroups}",
+            "target": "request_object_rules_api_groups",
+            "is_replace_missing": false,
+            "type": "string-builder-processor"
+        }
+    ]
+}
