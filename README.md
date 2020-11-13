@@ -10,6 +10,8 @@ Datadog Kubernetes Security Rules
 
     `kubectl create clusterrolebinding root-cluster-admin-binding --clusterrole=cluster-admin --user=jenks`  
     `kubectl delete clusterrolebinding root-cluster-admin-binding`
+    
+    4) Requires the json parser in the sample pipeline
 
 2) Rule - Clusterrole or role created with verb or resource wildcard  
   
@@ -20,6 +22,7 @@ Datadog Kubernetes Security Rules
     `kubectl create role jenks_test --verb=create --resource=pods`  
     `kubectl create clusterrole jenks_test --verb=create --resource=pods`  
 
+    4) 4) Requires the json parser in the sample pipeline and the string builder processors  
 Utility
 --
 
