@@ -1,55 +1,56 @@
 {
-    "creationAuthorId": 602888, 
-    "name": "User attempt clusterrolebinding to cluster-admin", 
-    "hasExtendedTitle": true, 
-    "type": "threshold", 
-    "isEnabled": true, 
-    "tags": [], 
-    "id": "anp-8ez-smu", 
-    "version": 11, 
-    "isDeleted": false, 
+    "creationAuthorId": 602888,
+    "tags": [],
+    "isEnabled": true,
+    "hasExtendedTitle": true,
+    "message": "**Goal:**\n\nDetect if a user attempts a clusterrolebinding to cluster-admin.\n\n**Remediation:**\n\n* Remove successful clusterrole binding: ```kubectl delete clusterrolebinding root-cluster-admin-binding```\n* Review related events to identify user using responseObject.subjects\n* If the logs are indexed, use the 'Log Explorer' for further analysis",
+    "options": {
+        "evaluationWindow": 900,
+        "maxSignalDuration": 86400,
+        "keepAlive": 3600
+    },
+    "version": 12,
+    "createdAt": 1603918781206,
+    "filters": [],
     "queries": [
         {
-            "distinctFields": [], 
-            "name": "", 
-            "aggregation": "count", 
+            "distinctFields": [],
+            "name": "",
+            "aggregation": "count",
             "groupByFields": [
                 "@requestObject.subjects.name"
-            ], 
-            "query": "@requestObject.apiVersion:rbac.authorization.k8s.io* @objectRef.resource:clusterrolebindings @verb:create  @responseStatus.status:Failure @responseObject.details.name:root-cluster-admin-binding", 
+            ],
+            "query": "@requestObject.apiVersion:rbac.authorization.k8s.io* @objectRef.resource:clusterrolebindings @verb:create  @responseStatus.status:Failure @responseObject.details.name:root-cluster-admin-binding",
             "trackType": "logs"
-        }, 
+        },
         {
-            "distinctFields": [], 
-            "name": "", 
-            "aggregation": "count", 
+            "distinctFields": [],
+            "name": "",
+            "aggregation": "count",
             "groupByFields": [
                 "@responseObject.subjects.name"
-            ], 
-            "query": "@requestObject.apiVersion:rbac.authorization.k8s.io* @objectRef.resource:clusterrolebindings @verb:create   @responseObject.metadata.name:root-cluster-admin-binding @responseStatus.code:201", 
+            ],
+            "query": "@requestObject.apiVersion:rbac.authorization.k8s.io* @objectRef.resource:clusterrolebindings @verb:create   @responseObject.metadata.name:root-cluster-admin-binding @responseStatus.code:201",
             "trackType": "logs"
         }
-    ], 
-    "message": "TBD", 
+    ],
+    "isDeleted": false,
     "cases": [
         {
-            "status": "info", 
-            "notifications": [], 
-            "name": "Failure", 
+            "status": "info",
+            "notifications": [],
+            "name": "Failure",
             "condition": "a>0"
-        }, 
+        },
         {
-            "status": "high", 
-            "notifications": [], 
-            "name": "Success", 
+            "status": "high",
+            "notifications": [],
+            "name": "Success",
             "condition": "b>0"
         }
-    ], 
-    "options": {
-        "evaluationWindow": 900, 
-        "keepAlive": 3600, 
-        "maxSignalDuration": 86400
-    }, 
-    "createdAt": 1603918781206, 
-    "isDefault": false
+    ],
+    "type": "threshold",
+    "id": "anp-8ez-smu",
+    "isDefault": false,
+    "name": "User attempt clusterrolebinding to cluster-admin"
 }
