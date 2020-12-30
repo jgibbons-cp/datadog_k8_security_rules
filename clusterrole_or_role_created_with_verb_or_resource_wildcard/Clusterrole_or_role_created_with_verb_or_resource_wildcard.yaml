@@ -1,23 +1,25 @@
 {
-    "creationAuthorId": 602888,
+    "creationAuthorId": 934609,
     "tags": [],
     "isEnabled": true,
-    "hasExtendedTitle": true,
-    "message": "***Sample Message***",
+    "hasExtendedTitle": false,
+    "message": "## Goal:\nDetect the creation of a clusterrole or role with a wildcard (e.g. *) for either the verb or resource.\n\n## Strategy:\nDetect the case if it occurs more than zero (0) times.\n\n## Triage and Response:\nDetect, and optionally group by user, and review RBAC.  Remove if necessary using:\n\n```\nkubectl delete clusterrole <clusterrole_name>\n```\nor\n```\nkubectl delete role <role_name>\n```",
     "options": {
+        "detectionMethod": "threshold",
         "evaluationWindow": 900,
-        "maxSignalDuration": 86400,
-        "keepAlive": 3600
+        "maxSignalDuration": 900,
+        "keepAlive": 900
     },
-    "version": 7,
-    "createdAt": 1604688216763,
+    "version": 8,
+    "createdAt": 1609288759621,
+    "filters": [],
     "queries": [
         {
             "distinctFields": [],
             "name": "",
             "aggregation": "count",
             "groupByFields": [],
-            "query": "@apiVersion:audit.k8s.io*  (@objectRef.resource:clusterroles OR @objectRef.resource:roles) @verb:create   (@request_object_rules_verbs:\"*\" OR @request_object_rules_resources:\"*\")",
+            "query": "@apiVersion:audit.k8s.io*  (@objectRef.resource:clusterroles OR @objectRef.resource:roles) @verb:create   (@requestObject.rules.verbs:* OR @requestObject.rules.resources:*)",
             "trackType": "logs"
         }
     ],
@@ -27,11 +29,11 @@
             "status": "high",
             "notifications": [],
             "name": "Clusterrole or role created with wildcard",
-            "condition": "a>1"
+            "condition": "a>0"
         }
     ],
-    "type": "threshold",
-    "id": "pik-q7n-bed",
+    "type": "log_detection",
+    "id": "gzn-jyb-bju",
     "isDefault": false,
     "name": "Clusterrole or role created with verb or resource wildcard"
 }
